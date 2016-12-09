@@ -1,14 +1,25 @@
-// to_str() is now to_string()
+/*
+  1.0.0:
+  -----
+  to_str() is now to_string()
 
-fn div_by_three(num: int) -> bool {
+  1.5.0:
+  -----
+  1. `i` is no longer a valid suffix for a numeric literal.
+  2. `int` is not a valid type; must use isize, i32, i64, etc.
+  3. `range` is no longer a thing. now there is a literal range syntax
+*/
+
+
+fn div_by_three(num: i64) -> bool {
   num % 3 == 0
 }
 
-fn div_by_five(num: int) -> bool {
+fn div_by_five(num: i64) -> bool {
   num % 5 == 0
 }
 
-fn div_by_fifteen(num: int) -> bool {
+fn div_by_fifteen(num: i64) -> bool {
   div_by_three(num) && div_by_five(num)
 }
 
@@ -43,8 +54,8 @@ fn test_div_by_fifteen_with_fifteen() {
 }
 
 fn main() {
-  for num in range(1i, 101) {
-    println!("{}", 
+  for num in 1..101 {
+    println!("{}",
       if div_by_fifteen(num) { "FizzBuzz".to_string() }
       else if div_by_three(num) { "Fizz".to_string() }
       else if div_by_five(num) { "Buzz".to_string() }
